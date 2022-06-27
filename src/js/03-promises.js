@@ -15,12 +15,14 @@ function onSubmit(event) {
   const intervId = setInterval(() => {
     createPromise(i, delayInput.value)
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(
+          `Fulfilled promise ${position + 1} in ${delay}ms`
+        );
+        console.log(`✅ Fulfilled promise ${(position += 1)} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(` Rejected ${position} in ${delay}ms`);
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(` Rejected ${(position += 1)} in ${delay}ms`);
+        console.log(`❌ Rejected promise ${(position += 1)} in ${delay}ms`);
       });
     i += 1;
 

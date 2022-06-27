@@ -32,6 +32,8 @@ const options = {
 flatpickr(input, options);
 
 function startTimer(event) {
+  buttonStart.setAttribute('disabled', 'disabled');
+  input.setAttribute('disabled', 'disabled');
   const intervalCountDown = setInterval(() => {
     const timeDifference = selectedDate - Date.now();
 
@@ -81,5 +83,3 @@ function selectDate(date) {
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
-
-c;
