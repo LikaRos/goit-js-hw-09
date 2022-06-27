@@ -1,3 +1,6 @@
+//модуль  для Alert
+import Notiflix from 'notiflix';
+
 const form = document.querySelector('.form');
 
 form.addEventListener('submit', onSubmit);
@@ -12,9 +15,11 @@ function onSubmit(event) {
   const intervId = setInterval(() => {
     createPromise(i, delayInput.value)
       .then(({ position, delay }) => {
+        Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
         console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
+        Notiflix.Notify.failure(` Rejected ${position} in ${delay}ms`);
         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
     i += 1;
